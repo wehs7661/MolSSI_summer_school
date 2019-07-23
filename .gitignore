@@ -1,3 +1,4 @@
 # jupyter notebook checkpoints
 .ipynb_checkpoints   # tell git to never keep track on this (so the file will not appear in git status anymore)
+*~
 
