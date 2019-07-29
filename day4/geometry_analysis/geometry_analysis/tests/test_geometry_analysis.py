@@ -11,6 +11,7 @@ import numpy as np
 
 @pytest.fixture()    # not necessarily be put in front of all the cases
 # This decorator is used to define things in common (in the folloing case, the 'water') in multiple testing cases
+
 def water_molecule():
     name = 'water'
     symbols = ['H', 'O', 'H']
@@ -18,6 +19,8 @@ def water_molecule():
     water = geometry_analysis.Molecule(name, symbols, coordinates)
 
     return water
+    # The code above is just like creating an class instance:
+    # water = geometry_analysis.Molecule('water', ['H', 'O', 'H'], np.array([[2, 0, 0], [0, 0, 0], [-2, 0, 0]])))
 
 def test_create_failure():
 
@@ -28,7 +31,7 @@ def test_create_failure():
     with pytest.raises(TypeError):
         water = geometry_analysis.Molecule(name, symbols, coordinates)
 
-def test_molecule_set_coordaintes(water_molecule):
+def test_molecule_set_coordaintes(water_molecule):  # test the property setter in the molecule.py (Molecule) 
     """Test that bond linst is rebuilt when we reset coodinates."""
 
     num_bonds = len(water_molecule.bonds)
@@ -36,7 +39,7 @@ def test_molecule_set_coordaintes(water_molecule):
     assert num_bonds == 2
 
     new_coordinates = np.array([[10000, 0, 0], [0, 0, 0], [-2, 0, 0]])
-    water_molecule.coodinates = new_coordinates
+    water_molecule.coordinates = new_coordinates
     new_num_bonds = len(water_molecule.bonds)
     
     assert new_num_bonds == 1
