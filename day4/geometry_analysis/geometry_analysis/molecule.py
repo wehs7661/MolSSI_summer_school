@@ -5,7 +5,7 @@ Contains a molecule class
 """
 
 import numpy as np
-from measure import * # calculate_angle, calculate_distance
+from .measure import * # calculate_angle, calculate_distance
 
 class Molecule:
     
